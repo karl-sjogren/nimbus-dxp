@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Nimbus.App.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <Label
+                Text="Nimbus DXP Tool"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Label
+                Text="Optimizely DXP Deployment history"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Click me"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Fill" />
+
+            <ActivityIndicator
+                x:Name="BusyIndicator"
+                IsRunning="True"
+                IsVisible="{Binding IsLoading}"
+                Color="White"
+                HorizontalOptions="Center" />
+
+            <ListView ItemsSource="{Binding Deployments}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="20, 10" ColumnSpacing="20" HorizontalOptions="Fill">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0"
+                                    FontSize="Medium"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding StartedAt, StringFormat='{0:yyyy-MM-dd HH:mm:ss}'}" />
+                                <Label Grid.Column="1"
+                                    FontSize="Medium"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding CompletedAt, StringFormat='{0:yyyy-MM-dd HH:mm:ss}'}" />
+                                <Label Grid.Column="2"
+                                    FontSize="Medium"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding Status}"
+                                    FontAttributes="Bold" />
+                                <Label Grid.Column="3"
+                                    FontSize="Medium"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding SourcePackage}" />
+                                <Label Grid.Column="4"
+                                    FontSize="Medium"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding TargetEnvironment}" />
+                                <Label Grid.Column="5"
+                                    FontSize="Medium"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding StartedBy}"
+                                    HorizontalTextAlignment="End" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
